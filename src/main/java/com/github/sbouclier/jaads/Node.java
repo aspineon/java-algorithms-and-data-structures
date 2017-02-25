@@ -51,19 +51,11 @@ public class Node<T> {
 	}
 
 	public int getDegree() {
-		if (children.isEmpty()) {
-			return 0;
-		} else {
-			return (int) children.stream().filter(n -> n != null).count();
-		}
+		return (int) children.stream().filter(n -> n != null).count();
 	}
 
 	public boolean isLeaf() {
-		if (children.isEmpty()) {
-			return true;
-		} else {
-			return !(children.stream().filter(n -> n != null).count() > 0);
-		}
+		return !(children.stream().filter(n -> n != null).count() > 0);
 	}
 
 	// -------------
