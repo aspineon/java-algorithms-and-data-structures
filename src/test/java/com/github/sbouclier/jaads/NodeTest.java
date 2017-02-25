@@ -6,6 +6,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+/**
+ * Node test
+ * 
+ * @author Stéphane Bouclier
+ *
+ */
 public class NodeTest {
 
 	@Test
@@ -82,9 +88,17 @@ public class NodeTest {
 		Node<Integer> node = new Node<>(1, 2);
 		node.addChild(new Node<Integer>(2));
 		node.addChild(new Node<Integer>(3));
-		
+
 		assertEquals(2, node.children.size());
 
 		node.addChild(new Node<Integer>(4));
+	}
+	
+	@Test
+	public void should_get_to_string() {
+		Node<String> node = new Node<>("ABC");
+		node.addChild(new Node<String>("DEF"));
+
+		assertEquals("Node [maxDegree=32767, value=ABC, children.size=1]", node.toString());
 	}
 }
