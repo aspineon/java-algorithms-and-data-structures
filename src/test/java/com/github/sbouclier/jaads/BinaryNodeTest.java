@@ -6,6 +6,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+/**
+ * BinaryNode test
+ * 
+ * @author Stéphane Bouclier
+ *
+ */
 public class BinaryNodeTest {
 
 	@Test
@@ -61,7 +67,7 @@ public class BinaryNodeTest {
 		nodeWithRightChild.setRight(new BinaryNode<Integer>(5));
 		assertTrue(nodeWithRightChild.getRight().isPresent());
 		assertEquals(5, nodeWithRightChild.getRight().get().getValue().intValue());
-		
+
 		BinaryNode<Integer> nodeWithLeftRightChild = new BinaryNode<>(6);
 		nodeWithLeftRightChild.setLeft(new BinaryNode<Integer>(7));
 		nodeWithLeftRightChild.setRight(new BinaryNode<Integer>(8));
