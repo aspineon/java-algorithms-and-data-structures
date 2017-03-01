@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
- * A binary is a tree where each node has at most 2 child nodes, usually called
+ * A binary tree is a tree where each node has at most 2 child nodes, usually called
  * left node and right node.
  * 
  * @author Stéphane Bouclier
