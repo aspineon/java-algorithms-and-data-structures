@@ -62,6 +62,40 @@ public class BinaryTreeTest {
 	public void cleanUp() {
 		System.setOut(null);
 	}
+	
+	@Test
+	public void should_get_height_equal_to_0_if_no_root() {
+		BinaryTree<Integer> tree = new BinaryTree<>(null);
+		assertEquals(0, tree.getHeight());
+	}
+	
+	@Test
+	public void should_get_height_equal_to_1_if_only_root() {
+		BinaryTree<Integer> tree = new BinaryTree<>(new BinaryNode<>(3));
+		assertEquals(1, tree.getHeight());
+	}
+	
+	@Test
+	public void should_get_height() {
+		BinaryNode<Integer> root = new BinaryNode<>(1);
+		BinaryNode<Integer> node2 = new BinaryNode<>(2);
+		BinaryNode<Integer> node3 = new BinaryNode<>(3);
+		BinaryNode<Integer> node4 = new BinaryNode<>(4);
+		BinaryNode<Integer> node5 = new BinaryNode<>(5);
+		
+		BinaryTree<Integer> tree = new BinaryTree<>(root);
+		root.setLeft(node2);
+		assertEquals(2, tree.getHeight());
+		
+		root.setRight(node3);
+		assertEquals(2, tree.getHeight());
+		
+		node2.setRight(node4);
+		assertEquals(3, tree.getHeight());
+		
+		node4.setLeft(node5);
+		assertEquals(4, tree.getHeight());
+	}
 
 	@Test
 	public void test_traversal_order_strategy_enum() {

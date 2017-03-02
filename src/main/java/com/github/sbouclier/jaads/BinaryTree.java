@@ -4,8 +4,8 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
- * A binary tree is a tree where each node has at most 2 child nodes, usually called
- * left node and right node.
+ * A binary tree is a tree where each node has at most 2 child nodes, usually
+ * called left node and right node.
  * 
  * @author Stéphane Bouclier
  *
@@ -61,6 +61,18 @@ public class BinaryTree<T> extends Tree<T> {
 			if (orderStrategy == TraversalOrderStrategy.POST_ORDER) {
 				action.accept(node.get());
 			}
+		}
+	}
+
+	public int getHeight() {
+		return getHeight(Optional.ofNullable((BinaryNode<T>) root));
+	}
+
+	private int getHeight(Optional<BinaryNode<T>> node) {
+		if (!node.isPresent()) {
+			return 0;
+		} else {
+			return 1 + Math.max(getHeight(node.get().getLeft()), getHeight(node.get().getRight()));
 		}
 	}
 
