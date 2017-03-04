@@ -1,4 +1,4 @@
-package com.github.sbouclier.jaads;
+package com.github.sbouclier.jaads.tree;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.Optional;
 
 import org.junit.Test;
+
+import com.github.sbouclier.jaads.tree.BinarySearchTree;
 
 /**
  * BinarySearchTree test

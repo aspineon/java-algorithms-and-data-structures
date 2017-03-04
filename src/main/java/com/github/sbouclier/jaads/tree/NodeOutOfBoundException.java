@@ -1,4 +1,4 @@
-package com.github.sbouclier.jaads;
+package com.github.sbouclier.jaads.tree;
 
 /**
  * Exception launched when adding a node into another node exceed the max degree

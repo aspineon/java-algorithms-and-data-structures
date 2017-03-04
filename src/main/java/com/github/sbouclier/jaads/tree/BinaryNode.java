@@ -1,4 +1,4 @@
-package com.github.sbouclier.jaads;
+package com.github.sbouclier.jaads.tree;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.github.sbouclier.jaads;
+package com.github.sbouclier.jaads.tree;
 
 /**
  * A tree is a hierarchical data without cycle which contains nodes. The first

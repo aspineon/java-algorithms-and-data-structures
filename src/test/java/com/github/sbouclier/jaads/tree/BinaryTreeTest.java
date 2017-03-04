@@ -1,4 +1,4 @@
-package com.github.sbouclier.jaads;
+package com.github.sbouclier.jaads.tree;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,6 +11,9 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.github.sbouclier.jaads.tree.BinaryNode;
+import com.github.sbouclier.jaads.tree.BinaryTree;
 
 /**
  * BinaryTree test
