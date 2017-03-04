@@ -16,6 +16,10 @@
 		<developerConnection>scm:git:ssh://git@github.com/sbouclier/java-algorithms-and-data-structures.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
+	<ciManagement>
+		<url>https://travis-ci.org/sbouclier/java-algorithms-and-data-structures/</url>
+		<system>Travis</system>
+	</ciManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,25 +45,37 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			
+			<!-- Code coverage -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.9</version>
 				<executions>
+					<!-- Prepare execution with Surefire -->
 					<execution>
-						<id>jacoco-initialize</id>
+						<id>pre-unit-test</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
+						<configuration>
+							<propertyName>surefireArgLine</propertyName>
+						</configuration>
 					</execution>
+					<!-- Generate report after tests are run -->
 					<execution>
-						<id>jacoco-site</id>
-						<phase>package</phase>
+						<id>post-unit-test</id>
+						<phase>test</phase>
 						<goals>
 							<goal>report</goal>
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>4.3.0</version>
 			</plugin>
 		</plugins>
 	</build>
