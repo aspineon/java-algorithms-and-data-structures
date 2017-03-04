@@ -16,18 +16,6 @@ import org.junit.Test;
  */
 public class FactorialTest {
 
-	@Test(expected = UnsupportedOperationException.class)
-	public void should_not_instanciate_class() throws Throwable {
-		final Constructor<Factorial> constructor = Factorial.class.getDeclaredConstructor();
-		constructor.setAccessible(true);
-
-		try {
-			constructor.newInstance();
-		} catch (InvocationTargetException e) {
-			throw e.getTargetException();
-		}
-	}
-
 	@Test
 	public void should_return_values() {
 		long[] expectedValues = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600 };
@@ -44,5 +32,17 @@ public class FactorialTest {
 				new BigInteger(
 						"93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000"),
 				Factorial.computeRecursively(100));
+	}
+
+	@Test(expected = UnsupportedOperationException.class)
+	public void should_not_instanciate_class() throws Throwable {
+		final Constructor<Factorial> constructor = Factorial.class.getDeclaredConstructor();
+		constructor.setAccessible(true);
+
+		try {
+			constructor.newInstance();
+		} catch (InvocationTargetException e) {
+			throw e.getTargetException();
+		}
 	}
 }
