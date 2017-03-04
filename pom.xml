@@ -23,6 +23,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss</maven.build.timestamp.format>
 	</properties>
 
 	<dependencies>
@@ -45,29 +46,17 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			
+
 			<!-- Code coverage -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.9</version>
 				<executions>
-					<!-- Prepare execution with Surefire -->
 					<execution>
-						<id>pre-unit-test</id>
+						<id>prepare-agent</id>
 						<goals>
 							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<propertyName>surefireArgLine</propertyName>
-						</configuration>
-					</execution>
-					<!-- Generate report after tests are run -->
-					<execution>
-						<id>post-unit-test</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -76,6 +65,9 @@
 				<groupId>org.eluder.coveralls</groupId>
 				<artifactId>coveralls-maven-plugin</artifactId>
 				<version>4.3.0</version>
+				<configuration>
+					<timestampFormat>${maven.build.timestamp.format}</timestampFormat>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
