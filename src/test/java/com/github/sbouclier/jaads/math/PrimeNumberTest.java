@@ -1,9 +1,11 @@
 package com.github.sbouclier.jaads.math;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -27,6 +29,15 @@ public class PrimeNumberTest {
 				863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997 };
 
 		assertArrayEquals(numbers, PrimeNumber.sieveOfEratosthenes(1000).toArray());
+	}
+
+	@Test
+	public void should_return_if_prime() {
+		List<Integer> primes = PrimeNumber.sieveOfEratosthenes(1000);
+
+		for (int n = 2; n <= 1000; n++) {
+			assertEquals(primes.contains(n), PrimeNumber.isPrime(n));
+		}
 	}
 
 	@Test(expected = UnsupportedOperationException.class)

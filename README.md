@@ -8,12 +8,12 @@ I have created this repository to share some developments of data structures and
 ## Implementations
 
 ### Mathematics
-..* Factorial (recursively and iteratively implementations)
-..* Fibonacci number (recursively and iteratively implementations)
-..* Prime number (Sieve of Eratosthenes)
+* Factorial (recursively and iteratively implementations)
+* Fibonacci number (recursively and iteratively implementations)
+* Prime number (Sieve of Eratosthenes)
 
 ### Trees
-..* Binary Search Tree
+* Binary Search Tree
 
 ### Sort
-..* Bogosort
+* Bogosort

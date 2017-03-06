@@ -1,5 +1,6 @@
 package com.github.sbouclier.jaads.math;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *      "https://en.wikipedia.org/wiki/Prime_number">https://en.wikipedia.org/wiki/Prime_number</a>
  */
 public class PrimeNumber {
-	
+
 	private PrimeNumber() {
 		throw new UnsupportedOperationException();
 	}
@@ -44,5 +45,17 @@ public class PrimeNumber {
 		}
 
 		return res;
+	}
+
+	/**
+	 * Miller-Rabin algorithm
+	 * 
+	 * @param n
+	 *            number
+	 * @return true if prime number, false if composite
+	 */
+	public static boolean isPrime(int n) {
+		BigInteger bigValue = BigInteger.valueOf(n);
+		return bigValue.isProbablePrime(100);
 	}
 }
