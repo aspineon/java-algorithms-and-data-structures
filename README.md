@@ -3,9 +3,17 @@
 
 # Java Algorithms and Data Structures
 
-I have created this repository to share some developments of data structures and algorithms than I practiced during my studies, works or just for fun. I tried to make all data structures/algorithmss from the most generic and unit tested way as possible.
+I have created this repository to share some developments of data structures and algorithms than I practiced during my studies, works or just for fun. I tried to make all data structures/algorithms from the most generic and unit tested way as possible.
 
 ## Implementations
-* Factorial (recursively and iteratively implementations)
-* Fibonacci Number (recursively and iteratively implementations)
-* Binary Search Tree
+
+### Mathematics
+..* Factorial (recursively and iteratively implementations)
+..* Fibonacci number (recursively and iteratively implementations)
+..* Prime number (Sieve of Eratosthenes)
+
+### Trees
+..* Binary Search Tree
+
+### Sort
+..* Bogosort
