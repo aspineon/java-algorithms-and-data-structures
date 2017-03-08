@@ -7,11 +7,17 @@ import java.util.List;
  * Quicksort is a divide and conquer algorithm
  * 
  * @author Stéphane Bouclier
+ * @see <a href=
+ *      "https://en.wikipedia.org/wiki/Quicksort">https://en.wikipedia.org/wiki/Quicksort</a>
  *
  * @param <T>
  *            type of value
  */
 public class QuickSort<T extends Comparable<T>> {
+
+	private QuickSort() {
+		throw new UnsupportedOperationException();
+	}
 
 	public static <T extends Comparable<T>> List<T> sortOutOfPlace(List<T> list) {
 		if (!list.isEmpty()) {
@@ -47,8 +53,6 @@ public class QuickSort<T extends Comparable<T>> {
 	}
 
 	private static <T extends Comparable<T>> void sortInPlace(List<T> list, int startIndex, int endIndex) {
-		System.out.println(list.size() + " startIndex:" + startIndex + ", endIndex:" + endIndex);
-
 		if (startIndex >= endIndex) {
 			return;
 		}

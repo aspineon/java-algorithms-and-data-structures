@@ -2,6 +2,8 @@ package com.github.sbouclier.jaads.sort;
 
 import static org.junit.Assert.assertArrayEquals;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -51,5 +53,17 @@ public class QuickSortTest {
 	@Test
 	public void should_sort_out_of_place_list_with_one_value() {
 		assertArrayEquals(new Integer[] { 2 }, QuickSort.sortOutOfPlace(listOneValue).toArray());
+	}
+
+	@Test(expected = UnsupportedOperationException.class)
+	public void should_not_instanciate_class() throws Throwable {
+		final Constructor<QuickSort> constructor = QuickSort.class.getDeclaredConstructor();
+		constructor.setAccessible(true);
+
+		try {
+			constructor.newInstance();
+		} catch (InvocationTargetException e) {
+			throw e.getTargetException();
+		}
 	}
 }
