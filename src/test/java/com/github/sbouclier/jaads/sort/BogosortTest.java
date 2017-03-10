@@ -25,6 +25,14 @@ public class BogosortTest {
 		assertArrayEquals(new Integer[] { 2, 3, 4, 8 }, list.toArray());
 	}
 
+	@Test
+	public void should_sort_empty_list() {
+		List<Integer> list = Arrays.asList();
+		Bogosort.sort(list);
+
+		assertArrayEquals(new Integer[] {}, list.toArray());
+	}
+
 	@Test(expected = UnsupportedOperationException.class)
 	public void should_not_instanciate_class() throws Throwable {
 		final Constructor<Bogosort> constructor = Bogosort.class.getDeclaredConstructor();
