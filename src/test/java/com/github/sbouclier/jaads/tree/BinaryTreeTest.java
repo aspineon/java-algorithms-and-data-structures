@@ -138,6 +138,12 @@ public class BinaryTreeTest {
 		assertEquals(0, new BinaryTree<>(null).countNodes());
 		assertEquals(9, tree.countNodes());
 	}
+	
+	@Test
+	public void should_count_leafs() {
+		assertEquals(0, new BinaryTree<>(null).countLeafs());
+		assertEquals(4, tree.countLeafs());
+	}
 
 	@Test
 	public void should_get_to_string() {

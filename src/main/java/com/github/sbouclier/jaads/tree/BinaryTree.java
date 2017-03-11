@@ -83,8 +83,26 @@ public class BinaryTree<T> extends Tree<T> {
 	private int countNodes(Optional<BinaryNode<T>> node) {
 		if (!node.isPresent()) {
 			return 0;
-		} else
+		} else {
 			return countNodes(node.get().getLeft()) + countNodes(node.get().getRight()) + 1;
+		}
+	}
+
+	public int countLeafs() {
+		return countLeafs(Optional.ofNullable((BinaryNode<T>) root));
+	}
+
+	private int countLeafs(Optional<BinaryNode<T>> node) {
+		if (!node.isPresent()) {
+			return 0;
+		} else {
+			final BinaryNode<T> n = node.get();
+			if (!n.getLeft().isPresent() && !n.getRight().isPresent()) {
+				return 1;
+			} else {
+				return countLeafs(n.getLeft()) + countLeafs(n.getRight());
+			}
+		}
 	}
 
 	// -------------
