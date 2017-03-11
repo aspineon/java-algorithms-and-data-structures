@@ -132,6 +132,12 @@ public class BinaryTreeTest {
 
 		assertEquals("A,C,E,D,B,H,I,G,F", String.join(",", res));
 	}
+	
+	@Test
+	public void should_count_nodes() {
+		assertEquals(0, new BinaryTree<>(null).countNodes());
+		assertEquals(9, tree.countNodes());
+	}
 
 	@Test
 	public void should_get_to_string() {
