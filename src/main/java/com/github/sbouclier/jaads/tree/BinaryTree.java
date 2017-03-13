@@ -1,6 +1,8 @@
 package com.github.sbouclier.jaads.tree;
 
+import java.util.LinkedList;
 import java.util.Optional;
+import java.util.Queue;
 import java.util.function.Consumer;
 
 /**
@@ -38,11 +40,11 @@ public class BinaryTree<T> extends Tree<T> {
 	 * @param action
 	 *            to apply
 	 */
-	public void traverse(TraversalOrderStrategy orderStrategy, Consumer<BinaryNode<T>> action) {
-		traverse(Optional.ofNullable((BinaryNode<T>) root), orderStrategy, action);
+	public void traverseDepthFirst(TraversalOrderStrategy orderStrategy, Consumer<BinaryNode<T>> action) {
+		traverseDepthFirst(Optional.ofNullable((BinaryNode<T>) root), orderStrategy, action);
 	}
 
-	private void traverse(Optional<BinaryNode<T>> node, TraversalOrderStrategy orderStrategy,
+	private void traverseDepthFirst(Optional<BinaryNode<T>> node, TraversalOrderStrategy orderStrategy,
 			Consumer<BinaryNode<T>> action) {
 		if (node.isPresent()) {
 
@@ -50,16 +52,44 @@ public class BinaryTree<T> extends Tree<T> {
 				action.accept(node.get());
 			}
 
-			traverse(node.get().getLeft(), orderStrategy, action);
+			traverseDepthFirst(node.get().getLeft(), orderStrategy, action);
 
 			if (orderStrategy == TraversalOrderStrategy.IN_ORDER) {
 				action.accept(node.get());
 			}
 
-			traverse(node.get().getRight(), orderStrategy, action);
+			traverseDepthFirst(node.get().getRight(), orderStrategy, action);
 
 			if (orderStrategy == TraversalOrderStrategy.POST_ORDER) {
 				action.accept(node.get());
+			}
+		}
+	}
+
+	public void traverseBreadthFirst(Consumer<BinaryNode<T>> action) {
+		traverseBreadthFirst(Optional.ofNullable((BinaryNode<T>) root), action);
+	}
+
+	private void traverseBreadthFirst(Optional<BinaryNode<T>> root, Consumer<BinaryNode<T>> action) {
+		Queue<BinaryNode<T>> queue = new LinkedList<BinaryNode<T>>();
+
+		if (!root.isPresent()) {
+			return;
+		}
+
+		queue.add(root.get());
+
+		while (!queue.isEmpty()) {
+			BinaryNode<T> node = (BinaryNode<T>) queue.remove();
+
+			action.accept(node);
+
+			if (node.getLeft().isPresent()) {
+				queue.add(node.getLeft().get());
+			}
+
+			if (node.getRight().isPresent()) {
+				queue.add(node.getRight().get());
 			}
 		}
 	}
