@@ -14,6 +14,8 @@ I have created this repository to share some developments of data structures and
 
 ### Trees
 * Binary Search Tree
+  + in depth traversal (pre/in/post order)
+  + in breadth traversal
 
 ### Sort
 * Bogosort

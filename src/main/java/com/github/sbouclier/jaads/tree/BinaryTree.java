@@ -126,12 +126,7 @@ public class BinaryTree<T> extends Tree<T> {
 		if (!node.isPresent()) {
 			return 0;
 		} else {
-			final BinaryNode<T> n = node.get();
-			if (!n.getLeft().isPresent() && !n.getRight().isPresent()) {
-				return 1;
-			} else {
-				return countLeafs(n.getLeft()) + countLeafs(n.getRight());
-			}
+			return node.get().isLeaf() ? 1 : countLeafs(node.get().getLeft()) + countLeafs(node.get().getRight());
 		}
 	}
 

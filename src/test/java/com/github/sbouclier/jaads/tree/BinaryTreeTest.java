@@ -157,6 +157,7 @@ public class BinaryTreeTest {
 	@Test
 	public void should_count_leafs() {
 		assertEquals(0, new BinaryTree<>(null).countLeafs());
+		assertEquals(1, new BinaryTree<>(new BinaryNode<Integer>(1)).countLeafs());
 		assertEquals(4, tree.countLeafs());
 	}
 
