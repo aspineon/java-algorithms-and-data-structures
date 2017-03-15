@@ -2,6 +2,7 @@ package com.github.sbouclier.jaads.tree;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -75,6 +76,40 @@ public class BinaryNodeTest {
 		nodeWithLeftRightChild.setRight(new BinaryNode<Integer>(8));
 		assertTrue(nodeWithLeftRightChild.getRight().isPresent());
 		assertEquals(8, nodeWithLeftRightChild.getRight().get().getValue().intValue());
+	}
+	
+	@Test
+	public void should_clone_nodes() throws CloneNotSupportedException {
+		BinaryNode<Integer> node1 = new BinaryNode<>(1);
+		BinaryNode<Integer> node2 = new BinaryNode<>(2);
+		BinaryNode<Integer> node3 = new BinaryNode<>(3);
+		BinaryNode<Integer> node4 = new BinaryNode<>(4);
+		BinaryNode<Integer> node5 = new BinaryNode<>(5);
+		
+		node1.setLeft(node2);
+		node1.setRight(node3);
+		
+		node2.setLeft(node4);
+		node3.setRight(node5);
+		
+		@SuppressWarnings("unchecked")
+		BinaryNode<Integer> cloneNode1 = (BinaryNode<Integer>) node1.clone();
+		BinaryNode<Integer> cloneNode2 = (BinaryNode<Integer>) cloneNode1.getLeft().get();
+		BinaryNode<Integer> cloneNode3 = (BinaryNode<Integer>) cloneNode1.getRight().get();
+		BinaryNode<Integer> cloneNode4 = (BinaryNode<Integer>) cloneNode2.getLeft().get();
+		BinaryNode<Integer> cloneNode5 = (BinaryNode<Integer>) cloneNode3.getRight().get();
+		
+		assertEquals(node1.value, cloneNode1.value);
+		assertEquals(node2.value, cloneNode2.value);
+		assertEquals(node3.value, cloneNode3.value);
+		assertEquals(node4.value, cloneNode4.value);
+		assertEquals(node5.value, cloneNode5.value);
+		
+		assertNotEquals(node1, cloneNode1);
+		assertNotEquals(node2, cloneNode2);
+		assertNotEquals(node3, cloneNode3);
+		assertNotEquals(node4, cloneNode4);
+		assertNotEquals(node5, cloneNode5);
 	}
 
 	@Test

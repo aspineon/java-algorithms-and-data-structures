@@ -10,7 +10,7 @@ import java.util.Optional;
  * @param <T>
  *            type of binary node value
  */
-public class BinaryNode<T> extends Node<T> {
+public class BinaryNode<T> extends Node<T> implements Cloneable {
 
 	public BinaryNode(T value) {
 		super(value, 2);
@@ -35,6 +35,21 @@ public class BinaryNode<T> extends Node<T> {
 			addChild(null);
 		}
 		children.add(1, node);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Object clone() throws CloneNotSupportedException {
+		BinaryNode<T> cloneNode = new BinaryNode<T>(value);
+
+		if (getLeft().isPresent()) {
+			cloneNode.setLeft((BinaryNode<T>) getLeft().get().clone());
+		}
+
+		if (getRight().isPresent()) {
+			cloneNode.setRight((BinaryNode<T>) getRight().get().clone());
+		}
+
+		return cloneNode;
 	}
 
 	@Override
